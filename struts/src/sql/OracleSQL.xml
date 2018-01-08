@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap namespace="test">
+  <typeAlias alias="dto" type="struts.test.ex03.MemberDTO"/>
+  
+ 
+    
+<select id="loginCheck" resultClass="int" parameterClass="dto">
+  select count(*) from test where id=#id# and pw=#pw#
+<dynamic prepend="where">
+
+</dynamic>
+</select>
+  <insert id="memberInsert" parameterClass="dto">
+    insert into test values(#id#,#pw#,#age#,#name#,sysdate,#image#)
+  </insert>
+  
+  <select id=" memberInfo" resultClass="dto" parameterClass="dto">
+   select *from test where id=#id#
+  
+  </select>
+
+
+
+	
+
+</sqlMap>
+

@@ -1,0 +1,94 @@
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+    
+    
+  <struts>
+  <package name="member" extends="struts-default">
+    <interceptors>
+      <interceptor name="memberDAO" class="struts.test.interceptor.MemberDaoDI"/>
+       <interceptor name="ibatis" class="struts.test.interceptor.IbatisDI"/>
+    </interceptors>
+    
+   <action name="loginForm" class="struts.test.ex03.LoginAction" method="form">
+     <result>/WEB-INF/views/1122/loginForm.jsp</result> 
+   </action>
+   
+   <action name="loginPro" class="struts.test.ex03.LoginAction">
+     <interceptor-ref name="servletConfig"/>
+     <interceptor-ref name="prepare" />
+     <interceptor-ref name="modelDriven" />
+     <interceptor-ref name="params" />
+     <interceptor-ref name="ibatis" />
+     <result>/WEB-INF/views/1122/loginPro.jsp</result> 
+   </action>
+  
+   
+   <action name="info" class="struts.test.ex03.InfoAction">
+     <interceptor-ref name="servletConfig" />
+     <interceptor-ref name="ibatis" />
+     <result>/WEB-INF/views/1122/info.jsp</result>
+   </action>
+   
+   <action name="coffee" class="struts.test.ex03.LoginAction" method="form">
+     <result>/WEB-INF/views/1122/coffee.jsp</result> 
+   </action>
+   <action name="hotcold" class="struts.test.ex03.CoffeeAction">
+     <result>/WEB-INF/views/1122/hotcold.jsp</result> 
+   </action>
+   
+   <action name="number" class="struts.test.ex03.CoffeeAction">
+     <result>/WEB-INF/views/1122/number.jsp</result> 
+   </action>
+   
+   <action name="takeout" class="struts.test.ex03.CoffeeAction">
+     <result>/WEB-INF/views/1122/takeout.jsp</result> 
+   </action>
+   
+     <action name="inputForm" class="struts.test.ex03.InputAction" method="form">
+     <result>/WEB-INF/views/1122/inputForm.jsp</result>
+   
+   </action>
+  
+   
+   <action name="inputPro" class="struts.test.ex03.InputAction">
+    <interceptor-ref name="ibatis"/>
+    <interceptor-ref name="fileUpload"/>
+    <interceptor-ref name="servletConfig"/>
+    <interceptor-ref name="prepare"/>
+    <interceptor-ref name="modelDriven"/>
+    <interceptor-ref name="params"/>
+    
+     <result type="redirect-action">loginForm</result>
+   
+   </action>
+   
+   <action name="modifyForm" class="struts.test.ex03.ModifyAction" method="form">
+     <interceptor-ref name="servletConfig" />
+     <interceptor-ref name="memberDAO" />
+     
+     <result>/WEB-INF/views/1122/modifyForm.jsp</result>
+   
+   </action>
+   
+   <action name="modifyPro" class="struts.test.ex03.ModifyAction">
+    <interceptor-ref name="memberDAO"/>
+    <interceptor-ref name="fileUpload"/>
+    <interceptor-ref name="servletConfig"/>
+    <interceptor-ref name="prepare"/>
+    <interceptor-ref name="modelDriven"/>
+    <interceptor-ref name="params"/>
+     <result>/WEB-INF/views/1122/modifyPro.jsp</result>
+   </action>
+   
+   <action name="delete" class="struts.test.ex03.DeleteAction">
+     <interceptor-ref name="servletConfig"/>
+     <interceptor-ref name="memberDAO"/>
+     <result>/WEB-INF/views/1122/delete.jsp</result>
+   
+   </action>
+  
+  
+  
+  </package>
+</struts>
